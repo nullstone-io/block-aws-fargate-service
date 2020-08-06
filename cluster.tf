@@ -1,11 +1,11 @@
 data "terraform_remote_state" "cluster" {
   backend = "pg"
 
-  workspace = "${var.stack_name}-${var.env}-${var.parent_blocks.cluster}"
+  workspace = "${var.nullstone.stack}-${var.nullstone.env}-${var.nullstone.parent_blocks.cluster}"
 
   config = {
-    conn_str    = var.backend_conn_str
-    schema_name = var.owner_id
+    conn_str    = var.nullstone.backend_conn_str
+    schema_name = var.nullstone.owner_id
   }
 }
 

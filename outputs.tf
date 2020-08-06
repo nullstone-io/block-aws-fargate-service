@@ -27,7 +27,7 @@ output "target_group_arn" {
 }
 
 output "cluster_block" {
-  value = var.parent_blocks.cluster
+  value = var.nullstone.parent_blocks.cluster
 }
 
 output "network_block" {

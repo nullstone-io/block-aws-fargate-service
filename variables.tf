@@ -1,29 +1,15 @@
-variable "owner_id" {
-  type = string
-}
-
-variable "stack_name" {
-  type = string
-}
-
-variable "env" {
-  type = string
-}
-
-variable "block_name" {
-  type = string
-}
-
-variable "parent_blocks" {
+variable "nullstone" {
   type = object({
-    cluster = string
+    owner_id : string
+    stack : string
+    env : string
+    block : string
+    parent_blocks : object({
+      cluster : string
+    })
+    backend_conn_str : string
   })
 }
-
-variable "backend_conn_str" {
-  type = string
-}
-
 
 variable "service_cpu" {
   type    = number

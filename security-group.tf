@@ -1,10 +1,10 @@
 resource "aws_security_group" "this" {
-  name = "${var.stack_name}-${var.env}-${var.block_name}"
+  name = "${var.nullstone.stack}-${var.nullstone.env}-${var.nullstone.block}"
 
   tags = {
-    Stack       = var.stack_name
-    Environment = var.env
-    Block       = var.block_name
+    Stack       = var.nullstone.stack
+    Environment = var.nullstone.env
+    Block       = var.nullstone.block
   }
 }
 

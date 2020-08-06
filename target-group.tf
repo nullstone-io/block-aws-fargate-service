@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "this" {
-  name                 = "${var.stack_name}-${var.env}-${var.block_name}"
+  name                 = "${var.nullstone.stack}-${var.nullstone.env}-${var.nullstone.block}"
   port                 = 80
   protocol             = "HTTP"
   target_type          = "ip"
@@ -7,8 +7,8 @@ resource "aws_lb_target_group" "this" {
   deregistration_delay = 30
 
   tags = {
-    Stack       = var.stack_name
-    Environment = var.env
-    Block       = var.block_name
+    Stack       = var.nullstone.stack
+    Environment = var.nullstone.env
+    Block       = var.nullstone.block
   }
 }

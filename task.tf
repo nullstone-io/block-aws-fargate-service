@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "this" {
-  family                   = "${var.stack_name}-${var.env}-${var.block_name}"
+  family                   = "${var.nullstone.stack}-${var.nullstone.env}-${var.nullstone.block}"
   cpu                      = var.service_cpu
   memory                   = var.service_memory
   network_mode             = "awsvpc"
@@ -7,15 +7,15 @@ resource "aws_ecs_task_definition" "this" {
   execution_role_arn       = data.aws_iam_role.execution.arn
 
   tags = {
-    Stack       = var.stack_name
-    Environment = var.env
-    Block       = var.block_name
+    Stack       = var.nullstone.stack
+    Environment = var.nullstone.env
+    Block       = var.nullstone.block
   }
 
   container_definitions = <<EOF
 [
   {
-    "name": "${var.block_name}",
+    "name": "${var.nullstone.block}",
     "image": "${aws_ecr_repository.this.repository_url}",
     "command": [],
     "portMappings": [
@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "this" {
       "options": {
         "awslogs-region": "${data.aws_region.this.name}",
         "awslogs-group": "${aws_cloudwatch_log_group.this.name}",
-        "awslogs-stream-prefix": "${var.env}"
+        "awslogs-stream-prefix": "${var.nullstone.env}"
       }
     }
   }

@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "this" {
-  name            = var.block_name
+  name            = var.nullstone.block
   cluster         = data.aws_ecs_cluster.cluster.arn
   desired_count   = 1
   task_definition = aws_ecs_task_definition.this.arn
@@ -17,19 +17,19 @@ resource "aws_ecs_service" "this" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.this.arn
-    container_name   = var.block_name
+    container_name   = var.nullstone.block
     container_port   = 80
   }
 
   tags = {
-    Stack       = var.stack_name
-    Environment = var.env
-    Block       = var.block_name
+    Stack       = var.nullstone.stack
+    Environment = var.nullstone.env
+    Block       = var.nullstone.block
   }
 }
 
 resource "aws_service_discovery_service" "this" {
-  name = var.block_name
+  name = var.nullstone.block
 
   dns_config {
     namespace_id = data.terraform_remote_state.cluster.outputs.service_discovery_id

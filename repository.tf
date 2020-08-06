@@ -1,11 +1,11 @@
 // This is a bit odd - we're creating a repository for every environment
 // We need to find a better way to do this
 resource "aws_ecr_repository" "this" {
-  name = "${var.stack_name}/${var.env}-${var.block_name}"
+  name = "${var.nullstone.stack}/${var.nullstone.env}-${var.nullstone.block}"
 
   tags = {
-    Stack       = var.stack_name
-    Environment = var.env
-    Block       = var.block_name
+    Stack       = var.nullstone.stack
+    Environment = var.nullstone.env
+    Block       = var.nullstone.block
   }
 }
